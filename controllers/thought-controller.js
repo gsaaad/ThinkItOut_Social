@@ -59,5 +59,4 @@ const thoughtController = {
       });
   },
 };
-S;
 module.exports = thoughtController;
