@@ -11,11 +11,13 @@ const UserSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
     email: {
       type: String,
       required: true,
       trim: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -24,7 +26,8 @@ const UserSchema = new Schema(
     },
     friends: [
       {
-        type: String,
+        type: Schema.Types.ObjectId,
+
         ref: "User",
       },
     ],

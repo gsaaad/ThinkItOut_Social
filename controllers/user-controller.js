@@ -84,6 +84,7 @@ const userController = {
             .json({ message: "There's no user with this id..Try again!" });
           return;
         }
+
         res.json(dbUserData);
       })
       .catch((err) => {
