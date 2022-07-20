@@ -56,8 +56,5 @@ UserSchema.virtual("friendCount").get(function () {
   // since its array, get me this schema's friends array
   return this.friends.length;
 });
-
-const Friend = model("Frind", FriendSchema);
 const User = model("User", UserSchema);
-
-(module.exports = User), Friend;
+module.exports = User;
