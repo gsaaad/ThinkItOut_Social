@@ -1,17 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-const FriendSchema = new Schema({
-  friendId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
-  },
-  friendName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-});
-
 const UserSchema = new Schema(
   {
     // basic date created at, username, email, password/
@@ -34,7 +22,12 @@ const UserSchema = new Schema(
       required: true,
       trim: true,
     },
-    friends: [FriendSchema],
+    friends: [
+      {
+        type: String,
+        ref: "User",
+      },
+    ],
 
     thoughts: [
       {
