@@ -16,17 +16,17 @@ const UserSchema = new Schema(
     },
     username: {
       type: String,
-      require: true,
+      required: true,
       trim: true,
     },
     email: {
       type: String,
-      require: true,
+      required: true,
       trim: true,
     },
     password: {
       type: String,
-      require: true,
+      required: true,
       trim: true,
     },
     friends: [FriendSchema],

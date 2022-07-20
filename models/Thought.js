@@ -2,13 +2,18 @@ const { Schema, model } = require("mongoose");
 
 const ThoughtSchema = new Schema(
   {
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
     },
     thoughtText: {
       type: String,
-      require: true,
+      required: true,
       trim: true,
     },
     reactions: [],

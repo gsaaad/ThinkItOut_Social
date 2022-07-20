@@ -74,7 +74,7 @@ const userController = {
     console.log(params);
     User.findOneAndUpdate(
       { _id: params.id },
-      { $push: { friends: _id } },
+      { $push: { friends: params.id } },
       { new: true }
     )
       .then((dbUserData) => {

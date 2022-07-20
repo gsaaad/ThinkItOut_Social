@@ -1,6 +1,18 @@
 const { Thought, User } = require("../models");
 
 const thoughtController = {
+  // get all thoughts
+  getAllThoughts(req, res) {
+    Thought.find({})
+      .then((dbThoughtData) => {
+        res.json(dbThoughtData);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(400).json(err);
+      });
+  },
+  // add thought
   addThought({ params, body }, res) {
     // this is the body of a thought
     console.log(body);
@@ -12,6 +24,7 @@ const thoughtController = {
           { _id: params.userId },
           //   thoughts array, add id
           { $push: { thoughts: _id } },
+          // { $push: { writtenBy: params.user.username } },
           //   new means give us an updated version of the document (NOSQL)
           { new: true }
         );
@@ -30,6 +43,7 @@ const thoughtController = {
         res.json(err);
       });
   },
+  // remove thought
   removeThought({ params }, res) {
     Thought.findOneAndDelete({ _id: params.thoughtId })
       .then((deletedThought) => {
