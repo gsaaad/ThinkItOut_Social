@@ -8,13 +8,25 @@ const UserSchema = new Schema({
   },
   username: {
     type: String,
+    require: true,
+    trim: true,
   },
   email: {
     type: String,
+    require: true,
+    trim: true,
   },
   password: {
     type: String,
+    require: true,
+    trim: true,
   },
+  friends: [],
+  friendCount: {
+    type: Number,
+    default: 0,
+  },
+  thoughts: [],
 });
 
 const User = model("User", UserSchema);
