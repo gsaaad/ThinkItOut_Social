@@ -5,6 +5,8 @@ const {
   createUser,
   updateUserById,
   deleteUserById,
+  addFriend,
+  removeFriend,
 } = require("../../controllers/user-controller");
 // get all and post at /api/pizzas
 
@@ -17,5 +19,8 @@ router
   .get(getUserById)
   .put(updateUserById)
   .delete(deleteUserById);
+
+router.route("/:userId").post(addFriend);
+router.route(":/userId/:friendId").delete(removeFriend);
 
 module.exports = router;

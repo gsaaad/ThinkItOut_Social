@@ -31,7 +31,7 @@ const thoughtController = {
       });
   },
   removeThought({ params }, res) {
-    Thought.FindOneAndDelete({ _id: params.thoughtId })
+    Thought.findOneAndDelete({ _id: params.thoughtId })
       .then((deletedThought) => {
         if (!deletedThought) {
           res

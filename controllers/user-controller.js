@@ -70,7 +70,57 @@ const userController = {
 
   // ADD friend
 
+  addFriend({ params }, res) {
+    console.log(params);
+    User.findOneAndUpdate(
+      { _id: params.id },
+      { $push: { friends: _id } },
+      { new: true }
+    )
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res
+            .status(404)
+            .json({ message: "There's no user with this id..Try again!" });
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json(err);
+      });
+  },
+
   // REMOVE friend
+  removeFriend({ params }, res) {
+    User.findOneAndDelete({ _id: params.friendId })
+      .then((deletedFriend) => {
+        if (!deletedFriend) {
+          res
+            .status(404)
+            .json({ message: "There's no friend with this id..Try again!" });
+          return;
+        }
+        return User.findOneAndUpdate(
+          { id: params.friendId },
+          { $pull: { friends: params.friendId } },
+          { new: true }
+        );
+      })
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res
+            .status(404)
+            .json({ message: "There's no user with this id.. Try again!" });
+          return;
+        }
+        res.json(dbUserData);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  },
 };
 
 module.exports = userController;
