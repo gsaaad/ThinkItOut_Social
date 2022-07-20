@@ -5,8 +5,10 @@ const userController = {
   getAllUsers(req, res) {
     User.find({})
       .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => console.log(err));
-    res.status(400).json(err);
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
   },
   // get user by id
   getUserById({ params }, res) {
@@ -36,7 +38,7 @@ const userController = {
   // update user by id
   updateUserById({ params, body }, res) {
     // new:true = don't send back the original, return ta new version of the updated document
-    User.findOneAndUpdate({ _id: params }, body, { new: true })
+    User.findOneAndUpdate({ _id: params.id }, body, { new: true })
       .then((dbUserData) => {
         if (!dbUserData) {
           res
