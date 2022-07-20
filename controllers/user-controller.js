@@ -52,8 +52,8 @@ const userController = {
         res.status(400).json(err);
       });
   },
-  // delete user by id
 
+  // delete user by id
   deleteUserById({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
       .then((dbUserData) => {
@@ -67,6 +67,10 @@ const userController = {
         res.status(400).json(err);
       });
   },
+
+  // ADD friend
+
+  // REMOVE friend
 };
 
 module.exports = userController;
