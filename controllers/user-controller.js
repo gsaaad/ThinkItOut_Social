@@ -62,11 +62,11 @@ const userController = {
           return;
         }
         res.json(dbUserData);
-        Thought.find({})
-          .deleteMany({ _id: params.userId })
-          .then((deletedData) => {
-            res.json(deletedData);
-          });
+        // Thought.find({})
+        //   .deleteMany({ _id: params.userId })
+        //   .then((deletedData) => {
+        //     res.json(deletedData);
+        //   });
       })
       .catch((err) => {
         res.status(400).json(err);

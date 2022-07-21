@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(require("./routes"));
 
+// database connection
 mongoose.connect("mongodb://localhost:27017/ThinkItOutSocial", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
